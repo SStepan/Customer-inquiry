@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerInquiry.WebAPI", "C
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CustomerInquiry.Database", "CustomerInquiry.Database\CustomerInquiry.Database.sqlproj", "{AFF0F9B5-379C-467A-BABF-6D1A2D1E91CB}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CustomerInquiry.DAL", "CustomerInquiry.DAL\CustomerInquiry.DAL.sqlproj", "{F68F5CA8-838B-4403-B925-A739DCD247AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,12 @@ Global
 		{AFF0F9B5-379C-467A-BABF-6D1A2D1E91CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFF0F9B5-379C-467A-BABF-6D1A2D1E91CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AFF0F9B5-379C-467A-BABF-6D1A2D1E91CB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F68F5CA8-838B-4403-B925-A739DCD247AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F68F5CA8-838B-4403-B925-A739DCD247AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F68F5CA8-838B-4403-B925-A739DCD247AC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F68F5CA8-838B-4403-B925-A739DCD247AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F68F5CA8-838B-4403-B925-A739DCD247AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F68F5CA8-838B-4403-B925-A739DCD247AC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

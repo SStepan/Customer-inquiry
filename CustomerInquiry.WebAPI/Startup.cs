@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using CustomerInquiry.BusinessLogic.Interfaces;
+using CustomerInquiry.BusinessLogic.Service;
 using CustomerInquiry.DAL;
+using CustomerInquiry.DAL.UnityOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,9 +32,13 @@ namespace CustomerInquiry.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddAutoMapper();
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CustomerInquiryDbContext>(options =>
                 options.UseSqlServer(connection));
+            services.AddTransient<CustomerInquiryDbContext>();
+            services.AddTransient<IUnityOfWork, UnityOfWork>();
+            services.AddTransient<ICustomerService, CustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

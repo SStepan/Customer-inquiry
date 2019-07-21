@@ -1,8 +1,8 @@
 ﻿using CustomerInquiry.DAL.Repository.Base;
-using CustomerInquiry.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using CustomerInquiry.Model;
 
 namespace CustomerInquiry.DAL.Repository
 {

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace CustomerInquiry.DAL.Entities
+namespace CustomerInquiry.Model
 {
+    [Table("CurrencyCode", Schema = "Installation")]
     public class CurrencyCode
     {
         public int CurrencyCodeId { get; set; }

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CustomerInquiry.DAL.Entities
+namespace CustomerInquiry.Model
 {
-    public class Customer
+    public class CustomerPostDto
     {
-        public int CustomerId { get; set; }
         public string CustomerName { get; set; }
         public string ContactEmail { get; set; }
         public int MobileNumber { get; set; }
+
     }
 }

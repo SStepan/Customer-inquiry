@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace CustomerInquiry.DAL.Entities
+namespace CustomerInquiry.Model
 {
+    [Table("TransactionStatus", Schema = "Installation")]
     public class TransactionStatus
     {
         public int TransactionStatusId { get; set; }

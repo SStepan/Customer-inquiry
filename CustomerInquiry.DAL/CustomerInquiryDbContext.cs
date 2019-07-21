@@ -1,8 +1,5 @@
-﻿using CustomerInquiry.DAL.Entities;
+﻿using CustomerInquiry.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CustomerInquiry.DAL
 {
@@ -16,6 +13,11 @@ namespace CustomerInquiry.DAL
         public CustomerInquiryDbContext(DbContextOptions<CustomerInquiryDbContext> options) : base(options)
         {
             Database.EnsureCreated();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
         }
     }
 }

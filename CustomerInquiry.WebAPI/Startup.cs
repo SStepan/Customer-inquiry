@@ -35,10 +35,11 @@ namespace CustomerInquiry.WebAPI
             services.AddAutoMapper();
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CustomerInquiryDbContext>(options =>
-                options.UseSqlServer(connection));
+                options.UseLazyLoadingProxies().UseSqlServer(connection));
             services.AddTransient<CustomerInquiryDbContext>();
             services.AddTransient<IUnityOfWork, UnityOfWork>();
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ITransactionService, TransactionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

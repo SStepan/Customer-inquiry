@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [UserData].[Transaction]
 (
-	[TransactionId] INT NOT NULL PRIMARY KEY,
-	[CustomerId] INT NOT NULL,
+	[TransactionId] BIGINT NOT NULL identity(1,1) PRIMARY KEY,
+	[CustomerId] BIGINT NOT NULL,
 	[TransactionDate] DATETIME NOT NULL,
 	[Amount] DECIMAL(16, 2) NOT NULL,
 	[CurrencyCodeId] INT NOT NULL,

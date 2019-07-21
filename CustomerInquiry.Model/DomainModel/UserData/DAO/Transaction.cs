@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -8,8 +9,10 @@ namespace CustomerInquiry.Model
     [Table("Transaction", Schema ="UserData")]
     public class Transaction
     {
-        public int TransactionId { get; set; }
-        public int CustomerId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long TransactionId { get; set; }
+        public long CustomerId { get; set; }
         public DateTime TransactionDate { get; set; }
         public decimal Amount { get; set; }
         public int CurrencyCodeId { get; set; }

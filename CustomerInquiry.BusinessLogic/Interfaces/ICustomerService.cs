@@ -11,5 +11,6 @@ namespace CustomerInquiry.BusinessLogic.Interfaces
         CustomerDto AddCustomer(CustomerPostDto customer);
         CustomerDto GetCustomer(int id);
         CustomerDto GetCustomer(string email);
+        CustomerDto GetCustomer(CustomerInquiryDto inquiryDto);
     }
 }

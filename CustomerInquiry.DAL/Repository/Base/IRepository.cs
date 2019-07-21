@@ -7,7 +7,7 @@ namespace CustomerInquiry.DAL.Repository.Base
 {
     public interface IRepository<T> where T : class
     {
-        T GetById(int id);
+        T GetById(long id);
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
         void Add(T entity);

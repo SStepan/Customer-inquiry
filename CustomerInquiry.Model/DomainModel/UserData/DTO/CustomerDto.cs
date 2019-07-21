@@ -6,11 +6,15 @@ namespace CustomerInquiry.Model
 { 
     public class CustomerDto
     {
-        public int CustomerId { get; set; }
+        public CustomerDto()
+        {
+            Transactions = new List<TransactionDto>();
+        }
+        public long CustomerId { get; set; }
         public string CustomerName { get; set; }
         public string ContactEmail { get; set; }
-        public int MobileNumber { get; set; }
+        public long MobileNumber { get; set; }
 
-        IEnumerable<TransactionDto> Transactions { get; set; }
+        public List<TransactionDto> Transactions { get; set; }
     }
 }

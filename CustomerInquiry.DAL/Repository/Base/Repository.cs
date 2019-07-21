@@ -30,7 +30,7 @@ namespace CustomerInquiry.DAL.Repository.Base
             return _entities.ToList();
         }
 
-        public T GetById(int id)
+        public T GetById(long id)
         {
             return _entities.Find(id);
         }

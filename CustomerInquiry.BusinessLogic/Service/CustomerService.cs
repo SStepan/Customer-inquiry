@@ -5,6 +5,7 @@ using CustomerInquiry.Model;
 using CustomerInquiry.Model.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace CustomerInquiry.BusinessLogic.Service
@@ -52,6 +53,19 @@ namespace CustomerInquiry.BusinessLogic.Service
         {
             var customer = _unityOfWork.Customers.GetCustomerByEmail(email);
             return _mapper.Map<CustomerDto>(customer);
+        }
+
+        public CustomerDto GetCustomer(CustomerInquiryDto inquiryDto)
+        {
+            Customer result;
+            if(!string.IsNullOrEmpty(inquiryDto.Email))
+            {
+                result = _unityOfWork.Customers.GetCustomerByEmail(inquiryDto.Email);
+                return _mapper.Map<CustomerDto>(result);
+            }
+
+            result = _unityOfWork.Customers.GetById(inquiryDto.CustomerId);
+            return _mapper.Map<CustomerDto>(result);
         }
     }
 }

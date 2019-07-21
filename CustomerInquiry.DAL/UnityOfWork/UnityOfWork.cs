@@ -12,8 +12,10 @@ namespace CustomerInquiry.DAL.UnityOfWork
         {
             _context = context;
             Customers = new CustomerRepository(_context);
+            Transactions = new TransactionService(_context);
         }
         public ICustomerRepository Customers { get; }
+        public ITransactionService Transactions { get; }
 
         public int Complete()
         {

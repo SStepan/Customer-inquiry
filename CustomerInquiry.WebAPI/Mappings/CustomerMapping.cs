@@ -14,6 +14,8 @@ namespace CustomerInquiry.WebAPI.Mappings
             CreateMap<Customer, CustomerDto>();
             CreateMap<CustomerDto, Customer>();
             CreateMap<CustomerPostDto, Customer>();
+            CreateMap<TransactionPostDto, Transaction>()
+                .ForMember(t => t.CurrencyCode, opts => opts.Ignore());
             CreateMap<Transaction, TransactionDto>()
                 .ForMember(t => t.TransactionStatus, opts => opts.MapFrom(t => t.TransactionStatus.Name))
                 .ForMember(t => t.CurrencyCode, opts => opts.MapFrom(t => t.CurrencyCode.Name));

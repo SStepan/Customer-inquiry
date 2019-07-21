@@ -9,13 +9,19 @@ namespace CustomerInquiry.Model
     [Table("Customer", Schema = "UserData")]
     public class Customer
     {
-        public int CustomerId { get; set; }
+        public Customer()
+        {
+            Transactions = new List<Transaction>();
+        }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long CustomerId { get; set; }
         [MaxLength(30)]
         public string CustomerName { get; set; }
         [MaxLength(25)]
         public string ContactEmail { get; set; }
         [MaxLength(30)]
-        public int MobileNumber { get; set; }
+        public long MobileNumber { get; set; }
 
         public virtual List<Transaction> Transactions { get; set; }
     }

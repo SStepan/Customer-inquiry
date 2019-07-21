@@ -8,6 +8,7 @@ namespace CustomerInquiry.DAL.UnityOfWork
     public interface IUnityOfWork : IDisposable
     {
         ICustomerRepository Customers { get; }
+        ITransactionService Transactions { get; }
         int Complete();
     }
 }

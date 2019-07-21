@@ -27,7 +27,7 @@ namespace CustomerInquiry.WebAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<CustomerDto> Get(int id)
         {
             return Ok(_customerService.GetCustomer(id));
         }

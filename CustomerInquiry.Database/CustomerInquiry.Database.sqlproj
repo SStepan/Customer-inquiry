@@ -66,8 +66,8 @@
     <Folder Include="Installation\TestData" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CustomerInquiry.Database.publish.xml" />
     <None Include="Installation\TestData\TransactionStatuses.sql" />
+    <None Include="CustomerInquiry.Database.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Installation\Security\Installation.sql" />

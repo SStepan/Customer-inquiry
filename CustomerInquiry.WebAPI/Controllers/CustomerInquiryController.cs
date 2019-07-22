@@ -16,10 +16,11 @@ namespace CustomerInquiry.WebAPI.Controllers
         {
             _customerService = customerService;
         }
+
         [HttpGet]
         public ActionResult<CustomerDto> Get([FromBody] CustomerInquiryDto customerIquiry)
         {
-            if (string.IsNullOrEmpty(customerIquiry.Email) && customerIquiry.CustomerId == 0)
+            if (string.IsNullOrEmpty(customerIquiry.Email) && customerIquiry.CustomerID == 0)
             {
                 return BadRequest(new { message = "Invalid criteria" });
             }

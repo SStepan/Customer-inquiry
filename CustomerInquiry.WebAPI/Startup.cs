@@ -7,6 +7,7 @@ using CustomerInquiry.BusinessLogic.Interfaces;
 using CustomerInquiry.BusinessLogic.Service;
 using CustomerInquiry.DAL;
 using CustomerInquiry.DAL.UnityOfWork;
+using CustomerInquiry.WebAPI.Extentions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -55,6 +56,7 @@ namespace CustomerInquiry.WebAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseMvc();
         }
     }

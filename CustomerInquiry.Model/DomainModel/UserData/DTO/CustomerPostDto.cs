@@ -8,7 +8,7 @@ namespace CustomerInquiry.Model
     {
         public string CustomerName { get; set; }
         public string ContactEmail { get; set; }
-        public int MobileNumber { get; set; }
+        public long MobileNumber { get; set; }
 
     }
 }

@@ -35,7 +35,7 @@ namespace CustomerInquiry.DAL.Repository.Base
             return _entities.Find(id);
         }
 
-        public void Remode(T entity)
+        public void Remove(T entity)
         {
             _entities.Remove(entity);
         }

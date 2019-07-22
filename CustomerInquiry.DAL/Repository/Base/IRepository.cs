@@ -11,6 +11,6 @@ namespace CustomerInquiry.DAL.Repository.Base
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
         void Add(T entity);
-        void Remode(T entity);
+        void Remove(T entity);
     }
 }

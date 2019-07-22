@@ -49,6 +49,7 @@ namespace CustomerInquiry.WebAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            _customerService.RemoveCustomer(id);
         }
     }
 }

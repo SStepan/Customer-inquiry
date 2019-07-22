@@ -27,7 +27,7 @@ namespace CustomerInquiry.BusinessLogic.Service
             var exitingCustomer = _unityOfWork.Customers.GetCustomerByEmail(customer.ContactEmail);
             if(exitingCustomer != null)
             {
-                throw new Exception($"customer with email: {exitingCustomer.ContactEmail} already exists");
+                throw new ValidationException($"customer with email: {exitingCustomer.ContactEmail} already exists");
             }
 
             var newCustomer = _mapper.Map<Customer>(customer);
@@ -61,11 +61,23 @@ namespace CustomerInquiry.BusinessLogic.Service
             if(!string.IsNullOrEmpty(inquiryDto.Email))
             {
                 result = _unityOfWork.Customers.GetCustomerByEmail(inquiryDto.Email);
+                if (inquiryDto.CustomerID != 0 && result.CustomerId != inquiryDto.CustomerID)
+                {
+                    throw new ValidationException("email and customer ID are not consistent");
+                }
                 return _mapper.Map<CustomerDto>(result);
             }
 
-            result = _unityOfWork.Customers.GetById(inquiryDto.CustomerId);
+            result = _unityOfWork.Customers.GetById(inquiryDto.CustomerID);
             return _mapper.Map<CustomerDto>(result);
+        }
+
+        public int RemoveCustomer(int id)
+        {
+            var customerToDelete = _unityOfWork.Customers.GetById(id);
+            _unityOfWork.Customers.Remove(customerToDelete);
+
+            return _unityOfWork.Complete();
         }
     }
 }

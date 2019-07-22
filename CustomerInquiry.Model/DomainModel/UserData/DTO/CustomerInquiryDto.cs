@@ -8,7 +8,7 @@ namespace CustomerInquiry.Model
     public class CustomerInquiryDto
     {
         [RegularExpression(@"^[0-9]{1,10}$", ErrorMessage = "Invalid Customer ID")]
-        public long CustomerId { get; set; }
+        public long CustomerID { get; set; }
         [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Invalid Email")]
         public string Email { get; set; }
     }

@@ -18,34 +18,25 @@ namespace CustomerInquiry.WebAPI.Controllers
         {
             _customerService = customerService;
         }
-        // GET api/values
+
         [HttpGet]
         public ActionResult<IEnumerable<CustomerDto>> Get()
         {
             return Ok(_customerService.GetAllCustomers());
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<CustomerDto> Get(int id)
         {
             return Ok(_customerService.GetCustomer(id));
         }
 
-        // POST api/values
         [HttpPost]
         public void Post([FromBody] CustomerPostDto customer)
         {
             _customerService.AddCustomer(customer);
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

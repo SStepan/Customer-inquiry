@@ -18,21 +18,19 @@ namespace CustomerInquiry.WebAPI.Controllers
         {
             _transactionService = transactionService;
         }
-        // GET api/values
+
         [HttpGet]
         public ActionResult<IEnumerable<TransactionDto>> Get()
         {
             return Ok(_transactionService.GetAllTransactions());
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<TransactionDto> Get(int id)
         {
             return Ok(_transactionService.GetTransaction(id));
         }
 
-        // POST api/values
         [HttpPost]
         public void Post([FromBody] TransactionPostDto transaction)
         {

@@ -11,7 +11,8 @@ namespace CustomerInquiry.BusinessLogic.Mappings
     {
         public CustomerMapping()
         {
-            CreateMap<Customer, CustomerDto>();
+            CreateMap<Customer, CustomerDto>()
+                .ForMember(t => t.Transactions, opts => opts.Ignore());
             CreateMap<CustomerDto, Customer>();
             CreateMap<CustomerPostDto, Customer>();
             CreateMap<TransactionPostDto, Transaction>()

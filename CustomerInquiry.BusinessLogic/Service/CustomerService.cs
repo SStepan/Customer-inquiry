@@ -6,6 +6,7 @@ using CustomerInquiry.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 
 namespace CustomerInquiry.BusinessLogic.Service
@@ -40,44 +41,61 @@ namespace CustomerInquiry.BusinessLogic.Service
         {
             var allCustomers = _unityOfWork.Customers.GetAll();
             var result = _mapper.Map<IEnumerable<CustomerDto>>(allCustomers);
+            foreach (var customerDto in result)
+            {
+                customerDto.Transactions = GetLastTransactions(customerDto.CustomerId);
+            }
             return result;
         }
 
-        public CustomerDto GetCustomer(int id)
+        public CustomerDto GetCustomer(long id)
         {
             var customer = _unityOfWork.Customers.GetById(id);
-            return _mapper.Map<CustomerDto>(customer);
+            var result = _mapper.Map<CustomerDto>(customer);
+            result.Transactions = GetLastTransactions(result.CustomerId);
+            return result;
         }
 
         public CustomerDto GetCustomer(string email)
         {
             var customer = _unityOfWork.Customers.GetCustomerByEmail(email);
-            return _mapper.Map<CustomerDto>(customer);
+            var result = _mapper.Map<CustomerDto>(customer);
+            result.Transactions = GetLastTransactions(result.CustomerId);
+            return result;
         }
 
         public CustomerDto GetCustomer(CustomerInquiryDto inquiryDto)
         {
-            Customer result;
+            CustomerDto result;
             if(!string.IsNullOrEmpty(inquiryDto.Email))
             {
-                result = _unityOfWork.Customers.GetCustomerByEmail(inquiryDto.Email);
+                result = GetCustomer(inquiryDto.Email);
                 if (inquiryDto.CustomerID != 0 && result.CustomerId != inquiryDto.CustomerID)
                 {
                     throw new ValidationException("email and customer ID are not consistent");
                 }
-                return _mapper.Map<CustomerDto>(result);
+                return result;
             }
 
-            result = _unityOfWork.Customers.GetById(inquiryDto.CustomerID);
-            return _mapper.Map<CustomerDto>(result);
+            return GetCustomer(inquiryDto.CustomerID);
         }
 
-        public int RemoveCustomer(int id)
+        public int RemoveCustomer(long id)
         {
             var customerToDelete = _unityOfWork.Customers.GetById(id);
             _unityOfWork.Customers.Remove(customerToDelete);
 
             return _unityOfWork.Complete();
+        }
+
+        private List<TransactionDto> GetLastTransactions(long customerId)
+        {
+            var recentTransactions = _unityOfWork.Transactions
+                .Find(t => t.CustomerId == customerId)
+                .OrderByDescending(t => t.TransactionDate)
+                .Take(5);
+
+            return _mapper.Map<IEnumerable<TransactionDto>>(recentTransactions).ToList();
         }
     }
 }

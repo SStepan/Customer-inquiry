@@ -9,10 +9,10 @@ namespace CustomerInquiry.BusinessLogic.Interfaces
     {
         IEnumerable<CustomerDto> GetAllCustomers();
         CustomerDto AddCustomer(CustomerPostDto customer);
-        CustomerDto GetCustomer(int id);
+        CustomerDto GetCustomer(long id);
         CustomerDto GetCustomer(string email);
         CustomerDto GetCustomer(CustomerInquiryDto inquiryDto);
-        int RemoveCustomer(int id);
+        int RemoveCustomer(long id);
     }
 
 }
